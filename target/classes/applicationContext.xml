@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+xmlns:aop="http://www.springframework.org/schema/aop" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.springframework.org/schema/beans 
+http://www.springframework.org/schema/beans/spring-beans.xsd 
+http://www.springframework.org/schema/aop 
+http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+	<aop:aspectj-autoproxy> 
+		<aop:include name="testLogger"/> 
+	</aop:aspectj-autoproxy>
+
+	<bean id="testLogger" class="io.github.mokaim.mokaim_springAOP.TestLogger"/>
+	
+	 <!-- UserService --> 
+	 <bean id="userService" class="io.github.mokaim.mokaim_springAOP.UserService"> 
+	 	<property name="dao" ref="userDao" /> 
+	 </bean> 
+	 
+	 <!-- UserDao --> 
+	 <bean id="userDao" class="io.github.mokaim.mokaim_springAOP.UserDao" /> 
+	 
+	  <!-- BoardService --> 
+	  <bean id="boardService" class="io.github.mokaim.mokaim_springAOP.BoardService"> 
+	  	<property name="dao" ref="boardDao" /> 
+	  </bean> 
+	  
+	  <!-- BoardrDao --> 
+	  <bean id="boardDao" class="io.github.mokaim.mokaim_springAOP.BoardDao" />
+
+</beans>
